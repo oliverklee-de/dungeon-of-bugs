@@ -7,11 +7,11 @@ namespace OliverKlee\DungeonOfBugs\Tests\Unit;
 use OliverKlee\DungeonOfBugs\FieldInterface;
 use OliverKlee\DungeonOfBugs\Tests\Unit\Support\ExpectsNonPassableField;
 use OliverKlee\DungeonOfBugs\Wall;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OliverKlee\DungeonOfBugs\Wall
- */
+#[CoversClass(Wall::class)]
 final class WallTest extends TestCase
 {
     use ExpectsNonPassableField;
@@ -23,17 +23,13 @@ final class WallTest extends TestCase
         $this->subject = new Wall();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function implementsField(): void
     {
         self::assertInstanceOf(FieldInterface::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rendersAsBricksEmoji(): void
     {
         self::assertSame('🧱', $this->subject->getEmoji());
