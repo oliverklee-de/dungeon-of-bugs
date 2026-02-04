@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace OliverKlee\DungeonOfBugs\Tests\Unit;
 
 use OliverKlee\DungeonOfBugs\Game;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Cursor;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * @covers \OliverKlee\DungeonOfBugs\Game
- */
+#[CoversClass(Game::class)]
 final class GameTest extends TestCase
 {
     private Game $subject;
@@ -26,18 +27,14 @@ final class GameTest extends TestCase
         $this->subject = new Game($this->outputMock, $cursor);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isRunningInitiallyReturnsTrue(): void
     {
         self::assertTrue($this->subject->isRunning());
     }
 
-    /**
-     * @test
-     * @dataProvider keyInputProvider
-     */
+    #[Test]
+    #[DataProvider('keyInputProvider')]
     public function isRunningAfterUserPressedAnyKeyExceptXReturnsTrue(string $key): void
     {
         $this->subject->processKeyInput($key);
@@ -45,9 +42,7 @@ final class GameTest extends TestCase
         self::assertTrue($this->subject->isRunning());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isRunningAfterUserPressedXReturnsFalse(): void
     {
         $this->subject->processKeyInput('x');
@@ -55,9 +50,7 @@ final class GameTest extends TestCase
         self::assertFalse($this->subject->isRunning());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function startOutputsWelcomeMessage(): void
     {
         $this->outputMock
@@ -77,9 +70,7 @@ final class GameTest extends TestCase
         $this->subject->start();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function startClearsScreen(): void
     {
         $outputMessages = [];
@@ -98,9 +89,7 @@ final class GameTest extends TestCase
         self::assertContains(sprintf("\x1b[%d;%dH", $expectedRow + 1, $expectedCol), $outputMessages);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function gameAfterUserPressedXOutputsByeMessage(): void
     {
         $this->outputMock
@@ -111,10 +100,8 @@ final class GameTest extends TestCase
         $this->subject->processKeyInput('x');
     }
 
-    /**
-     * @test
-     * @dataProvider keyInputProvider
-     */
+    #[Test]
+    #[DataProvider('keyInputProvider')]
     public function gameAfterUserPressedAnyKeyExceptCharXOutputsMap(string $key): void
     {
         $this->outputMock
@@ -125,9 +112,7 @@ final class GameTest extends TestCase
         $this->subject->processKeyInput($key);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function inMapViewAfterUserPressedXOutputsByeMessage(): void
     {
         $outputMessages = [];
@@ -156,9 +141,7 @@ final class GameTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function processKeyInputClearsScreenBeforeOutput(): void
     {
         $outputMessages = [];

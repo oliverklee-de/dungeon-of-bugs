@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace OliverKlee\DungeonOfBugs\Tests\Unit;
 
 use OliverKlee\DungeonOfBugs\Location;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \OliverKlee\DungeonOfBugs\Location
- */
+#[CoversClass(Location::class)]
 final class LocationTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function getXCoordinateInitiallyReturnsValueSetByConstructor(): void
     {
         $xCoordinate = 1;
@@ -23,9 +21,7 @@ final class LocationTest extends TestCase
         self::assertSame($xCoordinate, $subject->getXCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getYCoordinateInitiallyReturnsValueSetByConstructor(): void
     {
         $yCoordinate = 1;
@@ -34,9 +30,7 @@ final class LocationTest extends TestCase
         self::assertSame($yCoordinate, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function constructorThrowsExceptionForNegativeXCoordinate(): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -47,9 +41,7 @@ final class LocationTest extends TestCase
         $subject = new Location($xCoordinate, 100);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function constructorThrowsExceptionForNegativeYCoordinate(): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -60,9 +52,7 @@ final class LocationTest extends TestCase
         $subject = new Location(100, $yCoordinate);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveDownDecrementsYCoordinateByOne(): void
     {
         $initialYCoordinate = 1;
@@ -74,9 +64,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedYValue, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveDownCalledTwiceDecrementsYCoordinateByTwo(): void
     {
         $initialYCoordinate = 2;
@@ -89,9 +77,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedYValue, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveDownWithYCoordinateEqualToZeroThrowsException(): void
     {
         $initialYCoordinate = 0;
@@ -104,9 +90,7 @@ final class LocationTest extends TestCase
         $subject->moveDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveDownKeepsXCoordinateTheSame(): void
     {
         $initialXCoordinate = 1;
@@ -117,9 +101,7 @@ final class LocationTest extends TestCase
         self::assertSame($initialXCoordinate, $subject->getXCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveLeftDecrementsXCoordinateByOne(): void
     {
         $initialXCoordinate = 1;
@@ -131,9 +113,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedXValue, $subject->getXCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveLeftCalledTwiceDecrementsXCoordinateByTwo(): void
     {
         $initialXCoordinate = 2;
@@ -146,9 +126,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedXValue, $subject->getXCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveLeftWithXCoordinateEqualToZeroThrowsException(): void
     {
         $initialXCoordinate = 0;
@@ -161,9 +139,7 @@ final class LocationTest extends TestCase
         $subject->moveLeft();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveLeftKeepsYCoordinateTheSame(): void
     {
         $initialYCoordinate = 1;
@@ -174,9 +150,7 @@ final class LocationTest extends TestCase
         self::assertSame($initialYCoordinate, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveRightIncrementsXCoordinateByOne(): void
     {
         $initialXCoordinate = 1;
@@ -188,9 +162,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedXValue, $subject->getXCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveRightCalledTwiceIncrementsXCoordinateByTwo(): void
     {
         $initialXCoordinate = 2;
@@ -203,9 +175,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedXValue, $subject->getXCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveRightKeepsYCoordinateTheSame(): void
     {
         $initialYCoordinate = 1;
@@ -216,9 +186,7 @@ final class LocationTest extends TestCase
         self::assertSame($initialYCoordinate, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveUpIncrementsYCoordinateByOne(): void
     {
         $initialYCoordinate = 1;
@@ -230,9 +198,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedYValue, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveUpCalledTwiceIncrementsYCoordinateByTwo(): void
     {
         $initialYCoordinate = 1;
@@ -245,9 +211,7 @@ final class LocationTest extends TestCase
         self::assertSame($expectedYValue, $subject->getYCoordinate());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function moveUpKeepsXCoordinateTheSame(): void
     {
         $initialXCoordinate = 1;
