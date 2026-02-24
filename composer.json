@@ -71,7 +71,7 @@
 			"@check:php:lint",
 			"@check:php:stan"
 		],
-		"check:php:fixer": "php-cs-fixer fix --dry-run -v --show-progress=dots",
+		"check:php:fixer": "php-cs-fixer fix --dry-run --diff -v --show-progress=dots",
 		"check:php:lint": "find .*.php src tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
 		"check:php:stan": "phpstan --no-progress",
 		"check:static": [
