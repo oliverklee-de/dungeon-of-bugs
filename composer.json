@@ -24,6 +24,7 @@
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.50.0",
 		"friendsofphp/php-cs-fixer": "^3.94.2",
+		"php-parallel-lint/php-parallel-lint": "^1.4",
 		"phpstan/extension-installer": "^1.4.3",
 		"phpstan/phpstan": "^2.1.40",
 		"phpstan/phpstan-deprecation-rules": "^2.0.4",
@@ -72,7 +73,7 @@
 			"@check:php:stan"
 		],
 		"check:php:fixer": "php-cs-fixer fix --dry-run --diff -v --show-progress=dots",
-		"check:php:lint": "find .*.php src tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+		"check:php:lint": "parallel-lint .*.php src tests",
 		"check:php:stan": "phpstan --no-progress",
 		"check:static": [
 			"@check:composer",
