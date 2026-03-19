@@ -86,6 +86,7 @@ jobs:
           - composer:normalize
           - composer:psr-verify
           - php:fixer
+          - php:rector
           - php:stan
           - yaml:lint
         php-version:

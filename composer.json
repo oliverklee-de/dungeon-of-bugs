@@ -31,6 +31,7 @@
 		"phpstan/phpstan-phpunit": "^2.0.16",
 		"phpstan/phpstan-strict-rules": "^2.0.10",
 		"phpunit/phpunit": "^12.5.9",
+		"rector/rector": "^2.3",
 		"rector/type-perfect": "^2.1.2",
 		"symfony/yaml": "^7.3.5",
 		"typo3/coding-standards": "^0.8.0"
@@ -68,12 +69,14 @@
 		"check:composer:normalize": "@composer normalize --dry-run",
 		"check:composer:psr-verify": "@composer dumpautoload --optimize --strict-psr",
 		"check:php": [
+			"@check:php:rector",
 			"@check:php:fixer",
 			"@check:php:lint",
 			"@check:php:stan"
 		],
 		"check:php:fixer": "php-cs-fixer fix --dry-run --diff -v --show-progress=dots",
 		"check:php:lint": "parallel-lint .*.php src tests",
+		"check:php:rector": "rector process --dry-run --config=rector.php",
 		"check:php:stan": "phpstan --no-progress",
 		"check:static": [
 			"@check:composer",
@@ -90,9 +93,11 @@
 		],
 		"fix:composer": "@composer normalize",
 		"fix:php": [
+			"@fix:php:rector",
 			"@fix:php:cs"
 		],
 		"fix:php:cs": "php-cs-fixer fix --config .php-cs-fixer.php",
+		"fix:php:rector": "rector process --config=rector.php",
 		"phpstan:baseline": "phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline"
 	},
 	"scripts-descriptions": {
