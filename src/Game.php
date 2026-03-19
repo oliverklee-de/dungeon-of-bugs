@@ -9,15 +9,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Game
 {
-    private Cursor $cursor;
-    private OutputInterface $output;
     private bool $running = true;
 
-    public function __construct(OutputInterface $output, Cursor $cursor)
-    {
-        $this->output = $output;
-        $this->cursor = $cursor;
-    }
+    public function __construct(private readonly OutputInterface $output, private readonly Cursor $cursor) {}
 
     public function isRunning(): bool
     {
