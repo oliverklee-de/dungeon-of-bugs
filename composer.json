@@ -108,6 +108,7 @@
 		"check:php": "Runs all static checks for PHP files.",
 		"check:php:fixer": "Checks the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).",
 		"check:php:lint": "Lints the PHP files for syntax errors.",
+		"check:php:rector": "Checks for code for changes by Rector.",
 		"check:php:stan": "Checks the PHP types using PHPStan.",
 		"check:static": "Runs all static code checks (syntax, style, types).",
 		"check:tests:all": "Runs all PHPUnit tests (unit and functional).",
@@ -118,6 +119,7 @@
 		"fix:composer": "Normalizes all composer.json files.",
 		"fix:php": "Runs all fixers for the PHP code.",
 		"fix:php:cs": "Fixes the code style with PHP-CS-Fixer.",
+		"fix:php:rector": "Updates the code with Rector.",
 		"phpstan:baseline": "Updates the PHPStan baseline file to match the code."
 	}
 }
