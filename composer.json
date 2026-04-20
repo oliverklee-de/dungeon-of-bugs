@@ -83,9 +83,9 @@
 			"@check:php",
 			"@check:yaml:lint"
 		],
-		"check:tests:all": "phpunit --testsuite all",
-		"check:tests:functional": "phpunit --testsuite functional",
-		"check:tests:unit": "phpunit --testsuite unit",
+		"check:tests:all": "phpunit --config=./Build/phpunit/config.xml --testsuite all",
+		"check:tests:functional": "phpunit --config=./Build/phpunit/config.xml --testsuite functional",
+		"check:tests:unit": "phpunit --config=./Build/phpunit/config.xml --testsuite unit",
 		"check:yaml:lint": "find . ! -path 'vendor/*' -regextype egrep -regex '.*.ya?ml$' | xargs -r php ./vendor/bin/yaml-lint",
 		"fix": [
 			"@fix:composer",
