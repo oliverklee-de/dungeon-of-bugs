@@ -77,7 +77,7 @@
 		"check:php:fixer": "php-cs-fixer --config=./Build/php-cs-fixer/config.php fix --dry-run --diff -v --show-progress=dots",
 		"check:php:lint": "parallel-lint *.php src tests",
 		"check:php:rector": "rector process --dry-run --config=rector.php",
-		"check:php:stan": "phpstan --no-progress",
+		"check:php:stan": "phpstan --configuration=./Build/phpstan/phpstan.neon --no-progress",
 		"check:static": [
 			"@check:composer",
 			"@check:php",
@@ -98,7 +98,7 @@
 		],
 		"fix:php:cs": "php-cs-fixer fix --config=./Build/php-cs-fixer/config.php",
 		"fix:php:rector": "rector process --config=rector.php",
-		"phpstan:baseline": "phpstan --generate-baseline=phpstan-baseline.neon --allow-empty-baseline"
+		"phpstan:baseline": "phpstan --configuration=./Build/phpstan/phpstan.neon --generate-baseline=./Build/phpstan/phpstan-baseline.neon --allow-empty-baseline"
 	},
 	"scripts-descriptions": {
 		"check": "Runs all dynamic and static code checks.",
