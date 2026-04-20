@@ -4,4 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\DungeonOfBugs;
 
-class GameWorld {}
+class GameWorld
+{
+}

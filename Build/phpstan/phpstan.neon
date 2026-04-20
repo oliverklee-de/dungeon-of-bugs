@@ -8,6 +8,7 @@ parameters:
   level: 10
 
   paths:
+    - %currentWorkingDirectory%/Build/
     - %currentWorkingDirectory%/src/
     - %currentWorkingDirectory%/tests/
 

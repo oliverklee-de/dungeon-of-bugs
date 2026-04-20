@@ -11,7 +11,9 @@ class Game
 {
     private bool $running = true;
 
-    public function __construct(private readonly OutputInterface $output, private readonly Cursor $cursor) {}
+    public function __construct(private readonly OutputInterface $output, private readonly Cursor $cursor)
+    {
+    }
 
     public function isRunning(): bool
     {
