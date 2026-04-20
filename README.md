@@ -36,7 +36,6 @@ ddev exec dungeon-of-bugs
 | Composer script with local PHP     | `composer check:tests:all`           |
 | direct PHPUnit call with local PHP | `vendor/bin/phpunit --testsuite all` |
 | Composer script with DDEV          | `ddev composer check:tests:all`      |
-| direct PHPUnit call with DDEV      | `ddev exec phpunit --testsuite all`  |
 
 #### Running only the unit tests
 
@@ -45,7 +44,6 @@ ddev exec dungeon-of-bugs
 | Composer script with local PHP     | `composer check:tests:unit`           |
 | direct PHPUnit call with local PHP | `vendor/bin/phpunit --testsuite unit` |
 | Composer script with DDEV          | `ddev composer check:tests:unit`      |
-| direct PHPUnit call with DDEV      | `ddev exec phpunit --testsuite unit`  |
 
 #### Running only the functional tests
 
@@ -54,16 +52,6 @@ ddev exec dungeon-of-bugs
 | Composer script with local PHP     | `composer check:tests:functional`           |
 | direct PHPUnit call with local PHP | `vendor/bin/phpunit --testsuite functional` |
 | Composer script with DDEV          | `ddev composer check:tests:functional`      |
-| direct PHPUnit call with DDEV      | `ddev exec phpunit --testsuite functional`  |
-
-#### Running a single testcase
-
-This example is for running the testcase
-
-| Description                        | Command                                             |
-|------------------------------------|-----------------------------------------------------|
-| direct PHPUnit call with local PHP | `vendor/bin/phpunit tests/Unit/PlaceholderTest.php` |
-| direct PHPUnit call with DDEV      | `ddev exec phpunit tests/Unit/PlaceholderTest.php`  |
 
 ### In PHPStorm
 
@@ -80,7 +68,7 @@ After this, configure PHPUnit:
 4. in "PHPUnit library",
    select "Use Composer autoloader" and set `vendor/autoload.php` as path
 5. in "Test Runner",
-   select "Default configuration file" and set `phpunit.xml` as path to script
+   select "Default configuration file" and set `Build/phpunit/config.xml` as path to script
 
 Now you can right-click on a testcase or a directory and select "Run".
 
