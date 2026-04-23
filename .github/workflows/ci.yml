@@ -85,7 +85,7 @@ jobs:
         command:
           - composer:normalize
           - composer:psr-verify
-          - php:fixer
+          - php:cs-fixer
           - php:rector
           - php:stan
           - yaml:lint
