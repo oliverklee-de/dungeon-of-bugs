@@ -66,18 +66,18 @@
 			"@check:composer:normalize",
 			"@check:composer:psr-verify"
 		],
-		"check:composer:normalize": "@composer normalize --dry-run",
-		"check:composer:psr-verify": "@composer dumpautoload --optimize --strict-psr",
+		"check:composer:normalize": "@composer normalize --no-check-lock --dry-run",
+		"check:composer:psr-verify": "@composer dumpautoload --optimize --strict-psr --no-plugins",
 		"check:php": [
-			"@check:php:rector",
-			"@check:php:fixer",
 			"@check:php:lint",
+			"@check:php:rector",
+			"@check:php:cs-fixer",
 			"@check:php:stan"
 		],
-		"check:php:fixer": "php-cs-fixer --config=./Build/php-cs-fixer/config.php fix --dry-run --diff -v --show-progress=dots",
+		"check:php:cs-fixer": "php-cs-fixer --config=./Build/php-cs-fixer/config.php fix -v --dry-run --diff --show-progress=dots",
 		"check:php:lint": "parallel-lint Build src tests",
 		"check:php:rector": "rector process --dry-run --config=./Build/rector/config.php",
-		"check:php:stan": "phpstan --configuration=./Build/phpstan/phpstan.neon --no-progress",
+		"check:php:stan": "phpstan --no-progress -v --configuration=./Build/phpstan/phpstan.neon",
 		"check:static": [
 			"@check:composer",
 			"@check:php",
@@ -88,17 +88,17 @@
 		"check:tests:unit": "phpunit --config=./Build/phpunit/config.xml --testsuite unit",
 		"check:yaml:lint": "find . ! -path 'vendor/*' -regextype egrep -regex '.*.ya?ml$' | xargs -r php ./vendor/bin/yaml-lint",
 		"fix": [
-			"@fix:composer",
+			"@fix:composer:normalize",
 			"@fix:php"
 		],
-		"fix:composer": "@composer normalize",
+		"fix:composer:normalize": "@composer normalize",
 		"fix:php": [
 			"@fix:php:rector",
-			"@fix:php:cs"
+			"@fix:php:cs-fixer"
 		],
-		"fix:php:cs": "php-cs-fixer fix --config=./Build/php-cs-fixer/config.php",
+		"fix:php:cs-fixer": "php-cs-fixer fix --config=./Build/php-cs-fixer/config.php",
 		"fix:php:rector": "rector process --config=./Build/rector/config.php",
-		"phpstan:baseline": "phpstan --configuration=./Build/phpstan/phpstan.neon --generate-baseline=./Build/phpstan/phpstan-baseline.neon --allow-empty-baseline"
+		"phpstan:baseline": "phpstan --configuration=./Build/phpstan/phpstan.neon --allow-empty-baseline --generate-baseline=./Build/phpstan/phpstan-baseline.neon"
 	},
 	"scripts-descriptions": {
 		"check": "Runs all dynamic and static code checks.",
@@ -106,7 +106,7 @@
 		"check:composer:normalize": "Checks the composer.json.",
 		"check:composer:psr-verify": "Verifies PSR-4 namespace correctness.",
 		"check:php": "Runs all static checks for PHP files.",
-		"check:php:fixer": "Checks the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).",
+		"check:php:cs-fixer": "Checks the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).",
 		"check:php:lint": "Lints the PHP files for syntax errors.",
 		"check:php:rector": "Checks for code for changes by Rector.",
 		"check:php:stan": "Checks the PHP types using PHPStan.",
@@ -116,9 +116,9 @@
 		"check:tests:unit": "Runs the unit tests.",
 		"check:yaml:lint": "Lints the YAML files.",
 		"fix": "Runs all automatic code style fixes.",
-		"fix:composer": "Normalizes all composer.json files.",
+		"fix:composer:normalize": "Normalizes composer.json file content.",
 		"fix:php": "Runs all fixers for the PHP code.",
-		"fix:php:cs": "Fixes the code style with PHP-CS-Fixer.",
+		"fix:php:cs-fixer": "Fixes the code style with PHP-CS-Fixer.",
 		"fix:php:rector": "Updates the code with Rector.",
 		"phpstan:baseline": "Updates the PHPStan baseline file to match the code."
 	}
