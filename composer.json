@@ -19,7 +19,7 @@
 	},
 	"require": {
 		"php": "^8.3",
-		"symfony/console": "^7.3.6"
+		"symfony/console": "^7.4"
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.52.0",
@@ -33,7 +33,7 @@
 		"phpunit/phpunit": "^12.5.22",
 		"rector/rector": "^2.4",
 		"rector/type-perfect": "^2.1.4",
-		"symfony/yaml": "^7.4.12",
+		"symfony/yaml": "^7.4",
 		"typo3/coding-standards": "^0.8.0"
 	},
 	"prefer-stable": true,
