@@ -30,13 +30,13 @@ class RunGameCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // back up terminal settings
-        $sttyModeBackup = \shell_exec('stty -g');
+        $sttyModeBackup = shell_exec('stty -g');
 
         // disable keyboard echo
-        \shell_exec('stty -icanon -echo');
+        shell_exec('stty -icanon -echo');
 
-        $stdin = \fopen('php://stdin', 'rb');
-        \assert(\is_resource($stdin));
+        $stdin = fopen('php://stdin', 'rb');
+        assert(is_resource($stdin));
 
         $cursor = new Cursor($output);
         $game = new Game($output, $cursor);
@@ -44,12 +44,12 @@ class RunGameCommand extends Command
 
         do {
             $character = fread($stdin, 1);
-            \assert(\is_string($character));
+            assert(is_string($character));
             $game->processKeyInput($character);
         } while ($game->isRunning());
 
         // restore terminal settings
-        \shell_exec(sprintf('stty %s', $sttyModeBackup));
+        shell_exec(sprintf('stty %s', $sttyModeBackup));
 
         return Command::SUCCESS;
     }
