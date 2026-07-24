@@ -54,7 +54,7 @@ final class GameTest extends TestCase
     public function startOutputsWelcomeMessage(): void
     {
         $this->outputMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('writeln')
             ->with(
                 <<<TEXT
@@ -93,7 +93,7 @@ final class GameTest extends TestCase
     public function gameAfterUserPressedXOutputsByeMessage(): void
     {
         $this->outputMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('writeln')
             ->with('Thank you for playing Dungeon of Bugs!');
 
@@ -105,7 +105,7 @@ final class GameTest extends TestCase
     public function gameAfterUserPressedAnyKeyExceptCharXOutputsMap(string $key): void
     {
         $this->outputMock
-            ->expects(self::once())
+            ->expects($this->once())
             ->method('writeln')
             ->with('(This is the placeholder for the game map.)');
 
