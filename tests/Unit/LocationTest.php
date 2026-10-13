@@ -38,7 +38,7 @@ final class LocationTest extends TestCase
         $this->expectExceptionCode(1685453188);
 
         $xCoordinate = -1;
-        $subject = new Location($xCoordinate, 100);
+        new Location($xCoordinate, 100);
     }
 
     #[Test]
@@ -49,7 +49,7 @@ final class LocationTest extends TestCase
         $this->expectExceptionCode(1685453041);
 
         $yCoordinate = -1;
-        $subject = new Location(100, $yCoordinate);
+        new Location(100, $yCoordinate);
     }
 
     #[Test]
