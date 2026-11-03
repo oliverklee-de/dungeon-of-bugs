@@ -2,13 +2,15 @@ name: dungeon-of-bugs
 type: php
 docroot: ""
 php_version: "8.3"
-webserver_type: none
+webserver_type: "generic"
 router_http_port: "8080"
 router_https_port: "8081"
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
-database: none
+database:
+  type: ""
+  version: ""
 omit_containers: [db, ddev-ssh-agent]
 use_dns_when_possible: true
 timezone: Europe/Berlin
